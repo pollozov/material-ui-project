@@ -14,6 +14,8 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
 import useStyles from "./styles";
 
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 const App = () => {
     const { classes } = useStyles();
 
@@ -55,37 +57,47 @@ const App = () => {
                 </div>
                 <Container className={classes.cardGrid} maxWidth="md">
                     <Grid container spacing={4}>
-                        <Grid item>
-                            <Card className={classes.card}>
-                                <CardMedia 
-                                    className={classes.cardMedia} 
-                                    image="https://source.unsplash.com/random"
-                                    title="Image title"
-                                />
-                                <CardContent className={classes.cardContent}>
-                                    <Typography gutterBottom variant="h5">
-                                        Heading
-                                    </Typography>
-                                    <Typography>
-                                        This is media card. You can use this section to describe the content
-                                    </Typography>
+                        {cards.map((card) => (
+                            <Grid item key={card} xs={12} sm={4}>
+                                <Card className={classes.card}>
+                                    <CardMedia 
+                                        className={classes.cardMedia} 
+                                        image="https://source.unsplash.com/random"
+                                        title="Image title"
+                                    />
+                                    <CardContent className={classes.cardContent}>
+                                        <Typography gutterBottom variant="h5">
+                                            Heading
+                                        </Typography>
+                                        <Typography>
+                                            This is media card. You can use this section to describe the content
+                                        </Typography>
 
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small" color="primary">
-                                        View
-                                    </Button>
-                                    <Button size="small" color="primary">
-                                        Edit
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </Grid>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button size="small" color="primary">
+                                            View
+                                        </Button>
+                                        <Button size="small" color="primary">
+                                            Edit
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                            </Grid>
+                        ))}
                     </Grid>
                 </Container>
                 
             </main>
             
+            <footer className={classes.footer}>
+                <Typography variant="h6" align="center" gutterBottom>
+                    footer
+                </Typography>
+                <Typography variant="subtitle1" align="center" color="textSecondary">
+                    Something here
+                </Typography>
+            </footer>
         </>
     );
 }
