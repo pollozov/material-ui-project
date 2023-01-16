@@ -5,6 +5,9 @@ const useStyles = makeStyles()((theme) => ({
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(8, 0 , 6)
     },
+    bar: {
+        backgroundColor: theme.palette.primary.main,
+    },
     icon: {
         marginRight: '20px',
     },

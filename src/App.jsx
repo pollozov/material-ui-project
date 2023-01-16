@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useRef } from "react";
 import Typography from '@mui/material/Typography';
 import { AppBar } from "@mui/material";
 import Card from "@mui/material/Card";
@@ -12,17 +12,30 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from "@mui/material/Container";
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
+import AddNewForm from "./AddNewForm";
 import useStyles from "./styles";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const App = () => {
     const { classes } = useStyles();
+    const myRef = useRef(null);
+    const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <>
             <CssBaseline />
-            <AppBar position="relative">
+            <AppBar className={classes.bar} position="relative">
                 <Toolbar>
                     <PhotoCameraIcon className={classes.icon} />
                     <Typography variant="h6">
@@ -37,26 +50,27 @@ const App = () => {
                             Photo Album
                         </Typography>
                         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                            Hello everyone, this is a photo album
+                            Hello everyone, this is a photo album, where you can find my photos
                         </Typography>
                         <div className={classes.buttons} >
                             <Grid container spacing={2} justifyContent="center">
                                 <Grid item>
-                                    <Button variant="contained" color="primary">
+                                    <Button variant="contained" color="primary" onClick={executeScroll}>
                                         See my photos
                                     </Button>
                                 </Grid>
                                 <Grid item>
-                                    <Button variant="outlined" color="primary">
-                                        Secondary action
+                                    <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                                        Add new photo
                                     </Button>
+                                    <AddNewForm open={open} onClose={handleClose}  />
                                 </Grid>
                             </Grid>
                         </div>
                     </Container>
                 </div>
                 <Container className={classes.cardGrid} maxWidth="md">
-                    <Grid container spacing={4}>
+                    <Grid container spacing={4} ref={myRef}>
                         {cards.map((card) => (
                             <Grid item key={card} xs={12} sm={4}>
                                 <Card className={classes.card}>
@@ -92,10 +106,10 @@ const App = () => {
             
             <footer className={classes.footer}>
                 <Typography variant="h6" align="center" gutterBottom>
-                    footer
+                    Polina Lozovska
                 </Typography>
                 <Typography variant="subtitle1" align="center" color="textSecondary">
-                    Something here
+                    It's my mini project
                 </Typography>
             </footer>
         </>
