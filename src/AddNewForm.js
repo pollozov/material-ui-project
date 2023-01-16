@@ -2,6 +2,7 @@ import { React } from "react";
 import PropTypes from 'prop-types';
 import Dialog from '@mui/material/Dialog';
 import TextField from '@mui/material/TextField';
+import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import './AddNewForm.css'
 
@@ -24,6 +25,7 @@ export default function AddNewForm(props) {
             noValidate
             autoComplete="off"
         >
+            <DialogTitle>Adding new photo</DialogTitle>
             <div className="add-form">
                 <TextField
                     id="outlined-required"
@@ -39,10 +41,16 @@ export default function AddNewForm(props) {
                     label="Image URL"
                 />
                 <Button 
-                    variant="outlined"
+                    variant="contained"
                     onClick={handleClose}
                 >
                         Add
+                </Button>
+                <Button 
+                    variant="outlined"
+                    onClick={handleClose}
+                >
+                        Cancel
                 </Button>
             </div>
 

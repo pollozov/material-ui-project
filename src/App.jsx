@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Toolbar from '@mui/material/Toolbar';
 import Container from "@mui/material/Container";
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import AddNewForm from "./AddNewForm";
 import useStyles from "./styles";
@@ -37,7 +37,7 @@ const App = () => {
             <CssBaseline />
             <AppBar className={classes.bar} position="relative">
                 <Toolbar>
-                    <PhotoCameraIcon className={classes.icon} />
+                    <MenuIcon className={classes.icon} />
                     <Typography variant="h6">
                         Photo Album
                     </Typography>
